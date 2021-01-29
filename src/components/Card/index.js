@@ -30,6 +30,8 @@ export default function Card({ url, price }) {
       </button>
     </ListItem>
   ) : (
-    <p>Carregandp</p>
+    <ListItem>
+      <strong>Carregando</strong>
+    </ListItem>
   );
 }

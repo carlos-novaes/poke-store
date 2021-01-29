@@ -8,11 +8,12 @@ export const ListItem = styled.li`
   background: #fff;
   border-radius: 4px;
   padding: 20px;
+  max-height: 305px;
 
   img {
     align-self: center;
-    max-width: 250px;
-    max-height: 96px;
+    width: 150px;
+    max-height: 150px;
   }
 
   > strong {
