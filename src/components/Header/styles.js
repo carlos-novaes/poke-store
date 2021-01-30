@@ -5,7 +5,10 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 0;
+  padding: 10px 0;
+  background: ${(props) => props.theme.backgroundColor};
+  border-radius: 4px;
+  margin-bottom: 10px;
 
   img {
     max-width: 10rem;
