@@ -12,9 +12,71 @@ export const Cart = styled.div`
   background: #fff;
   border-radius: 4px;
   height: 628px;
+  max-height: 628px;
   width: 400px;
   position: sticky;
   top: 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  #poke-list {
+    overflow: auto;
+    height: 100%;
+
+    table {
+      width: 100%;
+
+      thead th {
+        color: #999;
+        text-align: left;
+        padding: 5px;
+      }
+
+      tbody td {
+        padding: 5px;
+        border-bottom: 1px solid #eee;
+      }
+
+      img {
+        height: 95px;
+      }
+
+      strong {
+        color: #333;
+        display: block;
+      }
+
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      div {
+        text-align: center;
+
+        input {
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          color: #666;
+          padding: 6px;
+          width: 50px;
+        }
+
+        div {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      button {
+        background: none;
+        border: 0;
+        padding: 6px;
+      }
+    }
+  }
 `;
 
 export const Container = styled.div`
