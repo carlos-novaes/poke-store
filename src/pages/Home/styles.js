@@ -11,6 +11,10 @@ export const PokeStoreLink = styled(Link)`
     background: #e7e7e7;
     width: 200px;
     height: 200px;
+
+    &:hover {
+      filter: brightness(80%);
+    }
   }
 `;
 

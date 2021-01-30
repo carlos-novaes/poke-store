@@ -27,8 +27,8 @@ export default function Home() {
         <PokeStoreLink to="/store" onClick={() => changeTheme('fire')}>
           <img src={fire} alt="fire" />
         </PokeStoreLink>
-        <PokeStoreLink to="/store" onClick={() => changeTheme('stone')}>
-          <img src={stone} alt="stone" />
+        <PokeStoreLink to="/store" onClick={() => changeTheme('rock')}>
+          <img src={stone} alt="rock" />
         </PokeStoreLink>
         <PokeStoreLink to="/store" onClick={() => changeTheme('water')}>
           <img src={water} alt="water" />

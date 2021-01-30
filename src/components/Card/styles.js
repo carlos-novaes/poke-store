@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-import { darken } from 'polished';
-
 export const ListItem = styled.li`
   display: flex;
   flex-direction: column;
@@ -30,7 +28,7 @@ export const ListItem = styled.li`
   }
 
   button {
-    background: #7159c1;
+    background: ${({ theme }) => theme.backgroundColor};
     color: #fff;
     border: 0;
     border-radius: 4px;
@@ -43,7 +41,7 @@ export const ListItem = styled.li`
     transition: background 0.2s;
 
     &:hover {
-      background: ${darken(0.03, '#7159c1')};
+      filter: brightness(80%);
     }
 
     div {

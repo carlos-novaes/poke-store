@@ -5,9 +5,12 @@ import { MdAddShoppingCart } from 'react-icons/md';
 import unknown from '../../assets/images/unknown.png';
 import { ListItem } from './styles';
 import { capitalize } from '../../util/capitalize';
+import { useTheme } from '../../hooks/theme';
 
 export default function Card({ url, price }) {
   const [pokemon, setPokemon] = useState({});
+
+  const { theme } = useTheme();
 
   useEffect(() => {
     axios.get(url).then((response) => {
@@ -16,7 +19,7 @@ export default function Card({ url, price }) {
   }, [url]);
 
   return pokemon.name ? (
-    <ListItem>
+    <ListItem theme={theme}>
       <img src={pokemon.sprites.front_default || unknown} alt={pokemon.name} />
       <strong>{capitalize(pokemon.name)}</strong>
       <span>{price}</span>

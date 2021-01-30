@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 10px 0;
-  background: ${(props) => props.theme.backgroundColor};
+  background: ${({ theme }) => theme.backgroundColor};
   border-radius: 4px;
   margin-bottom: 10px;
 
@@ -35,12 +35,12 @@ export const Anchor = styled(Link)`
 
     strong {
       display: block;
-      color: #fff;
+      color: ${({ theme }) => theme.textColor};
     }
 
     span {
       font-size: 12px;
-      color: #999;
+      color: ${({ theme }) => theme.textColor};
     }
   }
 `;

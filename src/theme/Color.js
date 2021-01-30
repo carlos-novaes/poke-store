@@ -1,18 +1,22 @@
 const StoresTheme = {
   grass: {
+    type: 'grass',
     textColor: '#fff',
     backgroundColor: '#264f12',
   },
-  stone: {
+  rock: {
+    type: 'rock',
     textColor: '#fff',
     backgroundColor: '#4b4638',
   },
   fire: {
-    textColor: '#fff',
+    type: 'fire',
+    textColor: '#000000',
     backgroundColor: '#cf4e1b',
   },
   water: {
-    textColor: '#fff',
+    type: 'water',
+    textColor: '#000000',
     backgroundColor: '#74ccf4',
   },
 };

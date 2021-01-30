@@ -12,8 +12,8 @@ export default function Header({ children }) {
   return (
     <>
       <Container theme={theme}>
-        <Anchor to="/">
-          <AiOutlineArrowLeft size={20} color="#fff" />
+        <Anchor to="/" theme={theme}>
+          <AiOutlineArrowLeft size={20} color={theme.textColor} />
           <div>
             <strong>Lojas</strong>
           </div>
@@ -23,12 +23,12 @@ export default function Header({ children }) {
           <img src={logo} alt="PokeStore" />
         </Link>
 
-        <Anchor to="/cart">
+        <Anchor to="/cart" theme={theme}>
           <div>
             <strong>Meu carrinho</strong>
             <span>3 itens</span>
           </div>
-          <MdShoppingBasket size={36} color="#fff" />
+          <MdShoppingBasket size={36} color={theme.textColor} />
         </Anchor>
       </Container>
       {children}
