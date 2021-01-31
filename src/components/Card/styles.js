@@ -29,7 +29,7 @@ export const ListItem = styled.li`
 
   button {
     background: ${({ theme }) => theme.backgroundColor};
-    color: #fff;
+    color: ${({ theme }) => theme.textColor};
     border: 0;
     border-radius: 4px;
     overflow: hidden;

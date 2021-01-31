@@ -26,7 +26,7 @@ export default function Card({ url, price }) {
 
       <button type="button">
         <div>
-          <MdAddShoppingCart size={16} color="#fff" /> 2
+          <MdAddShoppingCart size={16} color={theme.textColor} /> 2
         </div>
 
         <span>ADICIONAR AO CARRINHO</span>

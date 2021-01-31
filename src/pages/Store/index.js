@@ -11,7 +11,7 @@ import Card from '../../components/Card';
 import { useTheme } from '../../hooks/theme';
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
-import { Cart, Container, Filter, ProductList } from './styles';
+import { Cart, Container, Filter, ProductList, Total } from './styles';
 import pokeTest from '../../assets/images/pokeTest.png';
 
 const styles = {
@@ -36,10 +36,16 @@ export default function Store() {
   useEffect(() => {
     if (theme.type) {
       api.get(`type/${theme.type}`).then((response) => {
-        const data = response.data.pokemon.map((pokeData) => ({
-          ...pokeData.pokemon,
-          price: formatPrice(Math.ceil(Math.random() * 100)),
-        }));
+        const data = response.data.pokemon.map((pokeData) => {
+          const urlParts = pokeData.pokemon.url.split('/');
+          const pokeId = Number(urlParts[urlParts.length - 2]);
+          console.log(urlParts, pokeId);
+          return {
+            ...pokeData.pokemon,
+            id: pokeId,
+            price: formatPrice(pokeId),
+          };
+        });
         setPokemon(data);
       });
     } else {
@@ -70,7 +76,7 @@ export default function Store() {
               />
             ))}
         </ProductList>
-        <Cart>
+        <Cart theme={theme}>
           <div style={styles.cartTopSection}>
             <MdShoppingCart size={30} />
             <h2>Carrinho</h2>
@@ -86,7 +92,7 @@ export default function Store() {
                 </tr>
               </thead>
               <tbody>
-                {'12dfsfsdf3'.split('').map((x) => (
+                {'123456789'.split('').map((x) => (
                   <tr key={x}>
                     <td>
                       <img src={pokeTest} alt="test" />
@@ -133,9 +139,14 @@ export default function Store() {
               </tbody>
             </table>
           </div>
-          <div>
-            <h3>Total</h3>
-          </div>
+          <footer>
+            <button type="button"> Finalizar pedido</button>
+
+            <Total>
+              <span>TOTAL</span>
+              <strong>R$20,00</strong>
+            </Total>
+          </footer>
         </Cart>
       </Container>
     </div>
