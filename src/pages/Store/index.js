@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import {
+  MdShoppingCart,
   MdRemoveCircleOutline,
   MdAddCircleOutline,
   MdDelete,
@@ -14,10 +15,15 @@ import { Cart, Container, Filter, ProductList } from './styles';
 import pokeTest from '../../assets/images/pokeTest.png';
 
 const styles = {
-  display: 'grid',
-  justifyContent: 'space-around',
-  alignItems: 'center',
-  margin: '20px',
+  main: {
+    display: 'grid',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    margin: '20px',
+  },
+  cartTopSection: {
+    display: 'flex',
+  },
 };
 
 export default function Store() {
@@ -42,7 +48,7 @@ export default function Store() {
   }, [theme, history]);
 
   return (
-    <div style={styles}>
+    <div style={styles.main}>
       <Filter>
         <input
           type="text"
@@ -65,7 +71,10 @@ export default function Store() {
             ))}
         </ProductList>
         <Cart>
-          <h2>Carrinho</h2>
+          <div style={styles.cartTopSection}>
+            <MdShoppingCart size={30} />
+            <h2>Carrinho</h2>
+          </div>
           <div id="poke-list">
             <table>
               <thead>
@@ -77,7 +86,7 @@ export default function Store() {
                 </tr>
               </thead>
               <tbody>
-                {'123'.split('').map((x) => (
+                {'12dfsfsdf3'.split('').map((x) => (
                   <tr key={x}>
                     <td>
                       <img src={pokeTest} alt="test" />
@@ -94,13 +103,19 @@ export default function Store() {
                             type="button"
                             onClick={() => console.log('decrement')}
                           >
-                            <MdRemoveCircleOutline size={20} color="#7159c1" />
+                            <MdRemoveCircleOutline
+                              size={20}
+                              color={theme.backgroundColor}
+                            />
                           </button>
                           <button
                             type="button"
                             onClick={() => console.log('increment')}
                           >
-                            <MdAddCircleOutline size={20} color="#7159c1" />
+                            <MdAddCircleOutline
+                              size={20}
+                              color={theme.backgroundColor}
+                            />
                           </button>
                         </div>
                       </div>
@@ -110,7 +125,7 @@ export default function Store() {
                         type="button"
                         onClick={() => console.log('remove')}
                       >
-                        <MdDelete size={20} color="#7159c1" />
+                        <MdDelete size={20} color={theme.backgroundColor} />
                       </button>
                     </td>
                   </tr>
