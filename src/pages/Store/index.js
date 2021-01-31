@@ -69,7 +69,7 @@ export default function Store() {
             .filter((pokemonData) => pokemonData.name.includes(pokeFilter))
             .map((filteredPokemon) => (
               <Card
-                key={filteredPokemon.url}
+                key={filteredPokemon.id}
                 price={filteredPokemon.price}
                 url={filteredPokemon.url}
                 theme={theme}

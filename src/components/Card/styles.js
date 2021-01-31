@@ -8,23 +8,33 @@ export const ListItem = styled.li`
   padding: 20px;
   max-height: 305px;
 
-  img {
-    align-self: center;
-    width: 150px;
-    max-height: 150px;
-  }
+  a {
+    text-decoration: none;
+    color: #000;
+    div {
+      display: flex;
+      flex-direction: column;
 
-  > strong {
-    font-size: 16px;
-    line-height: 20px;
-    color: #333;
-    margin-top: 5px;
-  }
+      img {
+        align-self: center;
+        width: 150px;
+        max-height: 150px;
+      }
 
-  > span {
-    font-size: 21px;
-    font-weight: bold;
-    margin: 5px 0 20px;
+      > strong {
+        font-size: 16px;
+        line-height: 20px;
+        color: #333;
+        margin-top: 5px;
+      }
+
+      > span {
+        font-size: 21px;
+        font-weight: bold;
+        margin: 5px 0 20px;
+        text-decoration: none;
+      }
+    }
   }
 
   button {

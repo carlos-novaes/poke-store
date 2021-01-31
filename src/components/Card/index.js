@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MdAddShoppingCart } from 'react-icons/md';
 
+import { Link } from 'react-router-dom';
 import unknown from '../../assets/images/unknown.png';
 import { ListItem } from './styles';
 import { capitalize } from '../../util/capitalize';
@@ -20,9 +21,16 @@ export default function Card({ url, price }) {
 
   return pokemon.name ? (
     <ListItem theme={theme}>
-      <img src={pokemon.sprites.front_default || unknown} alt={pokemon.name} />
-      <strong>{capitalize(pokemon.name)}</strong>
-      <span>{price}</span>
+      <Link to={`details/${pokemon.id}`}>
+        <div id="link">
+          <img
+            src={pokemon.sprites.front_default || unknown}
+            alt={pokemon.name}
+          />
+          <strong>{capitalize(pokemon.name)}</strong>
+          <span>{price}</span>
+        </div>
+      </Link>
 
       <button type="button">
         <div>
