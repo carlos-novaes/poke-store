@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import {
   MdShoppingCart,
   MdRemoveCircleOutline,
@@ -13,7 +14,7 @@ import { useTheme } from '../../hooks/theme';
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
 import { Cart, Container, Filter, ProductList, Total } from './styles';
-import pokeTest from '../../assets/images/pokeTest.png';
+import { capitalize } from '../../util/capitalize';
 
 const styles = {
   main: {
@@ -30,17 +31,18 @@ const styles = {
 export default function Store() {
   const [pokemon, setPokemon] = useState([]);
   const [pokeFilter, setPokeFilter] = useState('');
+  const { theme } = useTheme();
   const history = useHistory();
 
-  const { theme } = useTheme();
-
+  /**
+   * Loads all pokémon from a type, if type isn't in context, redirects to store selection
+   */
   useEffect(() => {
     if (theme.type) {
       api.get(`type/${theme.type}`).then((response) => {
         const data = response.data.pokemon.map((pokeData) => {
           const urlParts = pokeData.pokemon.url.split('/');
           const pokeId = Number(urlParts[urlParts.length - 2]);
-          console.log(urlParts, pokeId);
           return {
             ...pokeData.pokemon,
             id: pokeId,
@@ -53,6 +55,25 @@ export default function Store() {
       history.push('/');
     }
   }, [theme, history]);
+
+  /**
+   * Populates cart and calculates total value
+   */
+  const cart = useSelector((state) =>
+    state.cart.map((item) => ({
+      ...item,
+      name: capitalize(item.name),
+    })),
+  );
+
+  const total = useSelector((state) =>
+    formatPrice(
+      state.cart.reduce((sumTotal, poke) => {
+        sumTotal += poke.id * poke.amount;
+        return sumTotal;
+      }, 0),
+    ),
+  );
 
   return (
     <div style={styles.main}>
@@ -93,18 +114,18 @@ export default function Store() {
                 </tr>
               </thead>
               <tbody>
-                {'123456789'.split('').map((x) => (
-                  <tr key={x}>
+                {cart.map((poke) => (
+                  <tr key={poke.id}>
                     <td>
-                      <img src={pokeTest} alt="test" />
+                      <img src={poke.sprites.front_default} alt={poke.name} />
                     </td>
                     <td>
-                      <strong>Teste Nome</strong>
-                      <span>R$20,00</span>
+                      <strong>{poke.name}</strong>
+                      <span>{poke.price}</span>
                     </td>
                     <td>
                       <div>
-                        <input type="number" readOnly value={10} />
+                        <input type="number" readOnly value={poke.amount} />
                         <div>
                           <button
                             type="button"
@@ -157,7 +178,7 @@ export default function Store() {
 
             <Total>
               <span>TOTAL</span>
-              <strong>R$20,00</strong>
+              <strong>{total}</strong>
             </Total>
           </footer>
         </Cart>
