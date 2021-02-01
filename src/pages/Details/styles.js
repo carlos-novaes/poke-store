@@ -7,13 +7,16 @@ export const Container = styled.div`
   width: 80%;
   margin: 30px auto;
   height: 80vh;
+  a {
+    text-decoration: none;
+    color: #000;
+    header {
+      display: flex;
+      align-items: center;
 
-  header {
-    display: flex;
-    align-items: center;
-
-    svg {
-      margin-right: 10px;
+      svg {
+        margin-right: 10px;
+      }
     }
   }
 

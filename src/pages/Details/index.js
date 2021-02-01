@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { IoChevronBackCircleOutline } from 'react-icons/io5';
 import api from '../../services/api';
 import { Container } from './styles';
@@ -25,10 +25,12 @@ export default function Details() {
 
   return pokemon.name ? (
     <Container theme={theme}>
-      <header>
-        <IoChevronBackCircleOutline size={20} />
-        <span>Voltar</span>
-      </header>
+      <Link to="/store">
+        <header>
+          <IoChevronBackCircleOutline size={20} />
+          <span>Voltar</span>
+        </header>
+      </Link>
       <section>
         <div id="img">
           <img

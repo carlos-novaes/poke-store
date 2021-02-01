@@ -7,6 +7,7 @@ import {
   MdAddCircleOutline,
   MdDelete,
 } from 'react-icons/md';
+import swal from 'sweetalert';
 import Card from '../../components/Card';
 import { useTheme } from '../../hooks/theme';
 import api from '../../services/api';
@@ -140,7 +141,19 @@ export default function Store() {
             </table>
           </div>
           <footer>
-            <button type="button"> Finalizar pedido</button>
+            <button
+              type="button"
+              onClick={() =>
+                swal(
+                  'Compra Finalizada',
+                  'Você recebeu R$50,00 em cashback',
+                  'success',
+                )
+              }
+            >
+              {' '}
+              Finalizar pedido
+            </button>
 
             <Total>
               <span>TOTAL</span>

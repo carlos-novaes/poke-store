@@ -5,6 +5,7 @@ import {
   MdAddCircleOutline,
   MdDelete,
 } from 'react-icons/md';
+import swal from 'sweetalert';
 import { useTheme } from '../../hooks/theme';
 import { Container, PokeTable, Total } from './styles';
 import pokeTest from '../../assets/images/pokeTest.png';
@@ -73,7 +74,19 @@ export default function Cart() {
       </div>
 
       <footer>
-        <button type="button"> Finalizar pedido</button>
+        <button
+          type="button"
+          onClick={() =>
+            swal(
+              'Compra Finalizada',
+              'Você recebeu R$50,00 em cashback',
+              'success',
+            )
+          }
+        >
+          {' '}
+          Finalizar pedido
+        </button>
 
         <Total>
           <span>TOTAL</span>
