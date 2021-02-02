@@ -13,8 +13,8 @@ export default function Routes() {
       <Route path="/" exact component={Home} />
       <Header>
         <Route path="/cart" component={Cart} />
+        <Route path="/store/:type" component={Store} />
         <Route path="/details/:id" component={Details} />
-        <Route path="/store" component={Store} />
       </Header>
     </Switch>
   );

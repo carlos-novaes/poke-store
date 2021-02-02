@@ -4,6 +4,26 @@ import createSagaMiddleware from 'redux-saga';
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
+function saveToLocalStorage(state) {
+  try {
+    const serialisedState = JSON.stringify(state);
+    localStorage.setItem('cart', serialisedState);
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+function loadFromLocalStorage() {
+  try {
+    const serialisedState = localStorage.getItem('cart');
+    if (serialisedState === null) return undefined;
+    return JSON.parse(serialisedState);
+  } catch (e) {
+    console.error(e);
+    return undefined;
+  }
+}
+
 const sagaMonitor =
   process.env.NODE_ENV === 'development'
     ? console.tron.createSagaMonitor()
@@ -18,7 +38,8 @@ const enhancer =
     ? compose(console.tron.createEnhancer(), applyMiddleware(sagaMiddleware))
     : applyMiddleware(sagaMiddleware);
 
-const store = createStore(rootReducer, enhancer);
+const store = createStore(rootReducer, loadFromLocalStorage(), enhancer);
+store.subscribe(() => saveToLocalStorage(store.getState()));
 
 sagaMiddleware.run(rootSaga);
 

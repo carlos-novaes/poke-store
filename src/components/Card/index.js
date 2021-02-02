@@ -24,10 +24,11 @@ export default function Card({ url, price }) {
       const pokemonData = {
         ...response.data,
         price: formatPrice(response.data.id),
+        type: theme.type,
       };
       setPokemon(pokemonData);
     });
-  }, [url]);
+  }, [url, theme.type]);
 
   function handleAddPokemon(pokemonToAdd) {
     dispatch(CartActions.addToCartRequest(pokemonToAdd));
@@ -35,7 +36,7 @@ export default function Card({ url, price }) {
 
   return pokemon.name ? (
     <ListItem theme={theme}>
-      <Link to={`details/${pokemon.id}`}>
+      <Link to={`/details/${pokemon.id}`}>
         <div id="link">
           <img
             src={pokemon.sprites.front_default || unknown}

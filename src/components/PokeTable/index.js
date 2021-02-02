@@ -15,14 +15,16 @@ export default function PokeTable({ subTotalHidden, imgSize }) {
   const { theme } = useTheme();
 
   /**
-   * Populates cart and calculates total value
+   * Populates cart
    */
   const cart = useSelector((state) =>
-    state.cart.map((pokemon) => ({
-      ...pokemon,
-      name: capitalize(pokemon.name),
-      subtotal: formatPrice(pokemon.amount * pokemon.id),
-    })),
+    state.cart
+      .filter((pokemon) => pokemon.type === theme.type)
+      .map((pokemon) => ({
+        ...pokemon,
+        name: capitalize(pokemon.name),
+        subtotal: formatPrice(pokemon.amount * pokemon.id),
+      })),
   );
 
   return (

@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { MdShoppingCart } from 'react-icons/md';
 import swal from 'sweetalert';
@@ -26,16 +26,19 @@ const styles = {
 export default function Store() {
   const [pokemon, setPokemon] = useState([]);
   const [pokeFilter, setPokeFilter] = useState('');
-  const { theme } = useTheme();
+  const { type } = useParams();
+  const { theme, changeTheme } = useTheme();
   const history = useHistory();
   const subTotalHidden = true;
+
+  useEffect(() => changeTheme(type), [changeTheme, type]);
 
   /**
    * Loads all pokémon from a type, if type isn't in context, redirects to store selection
    */
   useEffect(() => {
-    if (theme.type) {
-      api.get(`type/${theme.type}`).then((response) => {
+    if (type) {
+      api.get(`type/${type}`).then((response) => {
         const data = response.data.pokemon.map((pokeData) => {
           const urlParts = pokeData.pokemon.url.split('/');
           const pokeId = Number(urlParts[urlParts.length - 2]);
@@ -50,17 +53,19 @@ export default function Store() {
     } else {
       history.push('/');
     }
-  }, [theme, history]);
+  }, [type, history]);
 
   /**
-   * Populates cart and calculates total value
+   * Calculates total value
    */
   const total = useSelector((state) =>
     formatPrice(
-      state.cart.reduce((sumTotal, poke) => {
-        sumTotal += poke.id * poke.amount;
-        return sumTotal;
-      }, 0),
+      state.cart
+        .filter((poke) => poke.type === type)
+        .reduce((sumTotal, poke) => {
+          sumTotal += poke.id * poke.amount;
+          return sumTotal;
+        }, 0),
     ),
   );
 

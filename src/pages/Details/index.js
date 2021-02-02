@@ -25,7 +25,7 @@ export default function Details() {
 
   return pokemon.name ? (
     <Container theme={theme}>
-      <Link to="/store">
+      <Link to={`/store/${theme.type}`}>
         <header>
           <IoChevronBackCircleOutline size={20} />
           <span>Voltar</span>
