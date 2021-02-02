@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { MdAddShoppingCart } from 'react-icons/md';
 
@@ -30,6 +30,13 @@ export default function Card({ url, price }) {
     });
   }, [url, theme.type]);
 
+  const amount = useSelector((state) =>
+    state.cart.reduce((sumAmount, product) => {
+      sumAmount[product.id] = product.amount;
+      return sumAmount;
+    }, {}),
+  );
+
   const handleAddPokemon = (pokemonToAdd) =>
     dispatch(CartActions.addToCartRequest(pokemonToAdd));
 
@@ -48,7 +55,8 @@ export default function Card({ url, price }) {
 
       <button type="button" onClick={() => handleAddPokemon(pokemon)}>
         <div>
-          <MdAddShoppingCart size={16} color={theme.textColor} /> 2
+          <MdAddShoppingCart size={16} color={theme.textColor} />
+          {amount[pokemon.id] || 0}
         </div>
 
         <span>ADICIONAR AO CARRINHO</span>
