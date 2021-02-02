@@ -25,6 +25,11 @@ export default function cart(state = [], action) {
         }
       });
     }
+    case '@cart/EMPTY_CART': {
+      return produce(state, (draft) =>
+        draft.filter((pokemon) => pokemon.type !== action.pokeType),
+      );
+    }
     default:
       return state;
   }

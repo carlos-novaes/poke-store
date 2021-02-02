@@ -30,9 +30,8 @@ export default function Card({ url, price }) {
     });
   }, [url, theme.type]);
 
-  function handleAddPokemon(pokemonToAdd) {
+  const handleAddPokemon = (pokemonToAdd) =>
     dispatch(CartActions.addToCartRequest(pokemonToAdd));
-  }
 
   return pokemon.name ? (
     <ListItem theme={theme}>

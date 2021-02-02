@@ -24,7 +24,7 @@ export default function Home() {
         <PokeStoreLink to="/store/fire">
           <img src={fire} alt="fire" />
         </PokeStoreLink>
-        <PokeStoreLink to="/store/stone">
+        <PokeStoreLink to="/store/rock">
           <img src={stone} alt="stone" />
         </PokeStoreLink>
         <PokeStoreLink to="/store/water">

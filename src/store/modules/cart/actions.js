@@ -34,3 +34,10 @@ export function updateAmountSuccess(id, amount) {
     amount,
   };
 }
+
+export function emptyCart(pokeType) {
+  return {
+    type: '@cart/EMPTY_CART',
+    pokeType,
+  };
+}

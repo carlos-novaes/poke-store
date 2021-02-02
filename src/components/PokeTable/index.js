@@ -5,14 +5,16 @@ import {
   MdDelete,
   MdRemoveCircleOutline,
 } from 'react-icons/md';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTheme } from '../../hooks/theme';
 import { Table } from './styles';
 import { capitalize } from '../../util/capitalize';
 import { formatPrice } from '../../util/format';
+import * as CartActions from '../../store/modules/cart/actions';
 
 export default function PokeTable({ subTotalHidden, imgSize }) {
   const { theme } = useTheme();
+  const dispatch = useDispatch();
 
   /**
    * Populates cart
@@ -26,6 +28,15 @@ export default function PokeTable({ subTotalHidden, imgSize }) {
         subtotal: formatPrice(pokemon.amount * pokemon.id),
       })),
   );
+
+  const increment = (pokemon) =>
+    dispatch(CartActions.updateAmountRequest(pokemon.id, pokemon.amount + 1));
+
+  const decrement = (pokemon) =>
+    dispatch(CartActions.updateAmountRequest(pokemon.id, pokemon.amount - 1));
+
+  const removeFromCart = (pokemon) =>
+    dispatch(CartActions.removeFromCart(pokemon.id));
 
   return (
     <Table imgSize={imgSize}>
@@ -50,14 +61,14 @@ export default function PokeTable({ subTotalHidden, imgSize }) {
             </td>
             <td>
               <div>
-                <button type="button" onClick={() => console.log('decrement')}>
+                <button type="button" onClick={() => decrement(pokemon)}>
                   <MdRemoveCircleOutline
                     size={20}
                     color={theme.backgroundColor}
                   />
                 </button>
                 <input type="number" readOnly value={pokemon.amount} />
-                <button type="button" onClick={() => console.log('increment')}>
+                <button type="button" onClick={() => increment(pokemon)}>
                   <MdAddCircleOutline size={20} color={theme.backgroundColor} />
                 </button>
               </div>
@@ -68,7 +79,7 @@ export default function PokeTable({ subTotalHidden, imgSize }) {
               </td>
             )}
             <td>
-              <button type="button" onClick={() => console.log('remove')}>
+              <button type="button" onClick={() => removeFromCart(pokemon)}>
                 <MdDelete size={20} color={theme.backgroundColor} />
               </button>
             </td>

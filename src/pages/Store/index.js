@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MdShoppingCart } from 'react-icons/md';
 import swal from 'sweetalert';
 import Card from '../../components/Card';
@@ -10,6 +10,7 @@ import api from '../../services/api';
 import { formatPrice } from '../../util/format';
 import { Cart, Container, Filter, ProductList, Total } from './styles';
 import PokeTable from '../../components/PokeTable';
+import * as CartActions from '../../store/modules/cart/actions';
 
 const styles = {
   main: {
@@ -31,6 +32,7 @@ export default function Store() {
   const history = useHistory();
   const subTotalHidden = true;
 
+  const dispatch = useDispatch();
   useEffect(() => changeTheme(type), [changeTheme, type]);
 
   /**
@@ -69,6 +71,14 @@ export default function Store() {
     ),
   );
 
+  const handleCheckout = (pokeType) => {
+    swal(
+      'Compra Finalizada',
+      'Você recebeu R$50,00 em cashback',
+      'success',
+    ).then(() => dispatch(CartActions.emptyCart(pokeType)));
+  };
+
   return (
     <div style={styles.main}>
       <Filter>
@@ -103,16 +113,7 @@ export default function Store() {
             </div>
           </div>
           <footer>
-            <button
-              type="button"
-              onClick={() =>
-                swal(
-                  'Compra Finalizada',
-                  'Você recebeu R$50,00 em cashback',
-                  'success',
-                )
-              }
-            >
+            <button type="button" onClick={() => handleCheckout(type)}>
               Finalizar pedido
             </button>
 
