@@ -28,7 +28,7 @@ export const Cart = styled.div`
   border-radius: 4px;
   height: auto;
   max-height: 75vh;
-  width: 400px;
+  width: 450px;
   position: sticky;
   top: 20px;
   display: flex;
@@ -38,58 +38,9 @@ export const Cart = styled.div`
   #poke-list {
     overflow: auto;
     height: 100%;
-
-    table {
-      width: 100%;
-
-      thead th {
-        color: #999;
-        text-align: left;
-        padding: 5px;
-      }
-
-      tbody td {
-        padding: 5px;
-        border-bottom: 1px solid #eee;
-      }
-
-      img {
-        height: 95px;
-      }
-
-      strong {
-        color: #333;
-        display: block;
-      }
-
-      span {
-        display: block;
-        margin-top: 5px;
-        font-size: 18px;
-        font-weight: bold;
-      }
-      div {
-        text-align: center;
-
-        input {
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          color: #666;
-          padding: 6px;
-          width: 50px;
-        }
-
-        div {
-          display: flex;
-          align-items: center;
-        }
-      }
-
-      button {
-        background: none;
-        border: 0;
-        padding: 6px;
-      }
+    div {
+      display: flex;
+      justify-content: start;
     }
   }
 
@@ -119,7 +70,7 @@ export const Cart = styled.div`
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 5fr 2fr;
   grid-gap: 20px;
 `;
 
