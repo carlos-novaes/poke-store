@@ -1,11 +1,9 @@
 import produce from 'immer';
-import { toast } from 'react-toastify';
 
 export default function cart(state = [], action) {
   switch (action.type) {
     case '@cart/ADD_SUCCESS':
       return produce(state, (draft) => {
-        toast.success('Produto adicionado ao carrinho com sucesso');
         const { pokemon } = action;
 
         draft.push(pokemon);
@@ -20,7 +18,6 @@ export default function cart(state = [], action) {
       });
     case '@cart/UPDATE_AMOUNT_SUCCESS': {
       return produce(state, (draft) => {
-        toast.success('Produto adicionado ao carrinho com sucesso');
         const pokemonIndex = draft.findIndex((p) => p.id === action.id);
 
         if (pokemonIndex >= 0) {

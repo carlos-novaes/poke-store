@@ -1,29 +1,4 @@
 import styled from 'styled-components';
-// import { Link } from 'react-router-dom';
-
-// export const PokeStoreLink = styled(Link)`
-//   width: fit-content;
-//   display: flex;
-//   margin: 0 auto;
-
-//   img {
-//     border-radius: 50%;
-//     background: #e7e7e7;
-//     width: 200px;
-//     height: 200px;
-
-//     &:hover {
-//       filter: brightness(80%);
-//     }
-//   }
-// `;
-
-// export const Container = styled.div`
-//   display: grid;
-//   grid-gap: 50px;
-//   margin: 30px 300px;
-//   grid-template-columns: repeat(2, 1fr);
-// `;
 
 export const Wrapper = styled.div`
   margin-top: 1rem;
@@ -37,10 +12,11 @@ export const Wrapper = styled.div`
     width: 30vw;
     @media (max-width: 1100px) {
       width: 50vw;
-      margin-bottom: 100px;
+      margin-bottom: 80px;
     }
     @media (max-width: 868px) {
       width: 70vw;
+      margin-bottom: 60px;
     }
   }
 
