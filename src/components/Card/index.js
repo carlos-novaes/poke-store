@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import axios from 'axios';
 import { MdAddShoppingCart } from 'react-icons/md';
 
 import { Link } from 'react-router-dom';
@@ -10,25 +9,23 @@ import * as CartActions from '../../store/modules/cart/actions';
 
 import { ListItem } from './styles';
 import { capitalize } from '../../util/capitalize';
-import { useTheme } from '../../hooks/theme';
 import { formatPrice } from '../../util/format';
+import api from '../../services/api';
 
-export default function Card({ url, price }) {
+export default function Card({ price, theme, id, type }) {
   const [pokemon, setPokemon] = useState({});
-
-  const { theme } = useTheme();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    axios.get(url).then((response) => {
+    api.get(`pokemon/${id}/`).then((response) => {
       const pokemonData = {
         ...response.data,
         price: formatPrice(response.data.id),
-        type: theme.type,
+        type,
       };
       setPokemon(pokemonData);
     });
-  }, [url, theme.type]);
+  }, [id, type]);
 
   const amount = useSelector((state) =>
     state.cart.reduce((sumAmount, product) => {

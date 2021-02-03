@@ -11,6 +11,7 @@ import { Table } from './styles';
 import { capitalize } from '../../util/capitalize';
 import { formatPrice } from '../../util/format';
 import * as CartActions from '../../store/modules/cart/actions';
+import unknown from '../../assets/images/unknown.png';
 
 export default function PokeTable({ subTotalHidden, imgSize }) {
   const { theme } = useTheme();
@@ -53,7 +54,10 @@ export default function PokeTable({ subTotalHidden, imgSize }) {
         {cart.map((pokemon) => (
           <tr key={pokemon.id}>
             <td>
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <img
+                src={pokemon.sprites.front_default || unknown}
+                alt={pokemon.name}
+              />
             </td>
             <td>
               <strong>{pokemon.name}</strong>

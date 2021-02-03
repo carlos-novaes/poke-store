@@ -43,7 +43,7 @@ export default function Cart() {
         </header>
       </Link>
       <div>
-        <PokeTable subTotalHidden={subTotalHidden} />
+        <PokeTable imgSize="96px" subTotalHidden={subTotalHidden} />
       </div>
 
       <footer>

@@ -48,6 +48,7 @@ export default function Store() {
             ...pokeData.pokemon,
             id: pokeId,
             price: formatPrice(pokeId),
+            type,
           };
         });
         setPokemon(data);
@@ -97,8 +98,9 @@ export default function Store() {
               <Card
                 key={filteredPokemon.id}
                 price={filteredPokemon.price}
-                url={filteredPokemon.url}
+                type={filteredPokemon.type}
                 theme={theme}
+                id={filteredPokemon.id}
               />
             ))}
         </ProductList>
