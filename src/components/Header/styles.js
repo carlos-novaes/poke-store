@@ -10,6 +10,11 @@ export const Container = styled.div`
   border-radius: 4px;
   margin-bottom: 10px;
 
+  @media (max-width: 750px) {
+    position: sticky;
+    top: 0;
+  }
+
   img {
     max-width: 10rem;
   }
