@@ -86,7 +86,7 @@ export default function Store() {
           type="text"
           vale={pokeFilter}
           placeholder="Buscar Pokemon"
-          onChange={(event) => setPokeFilter(event.target.value)}
+          onChange={(event) => setPokeFilter(event.target.value.toLowerCase())}
         />
       </Filter>
       <Container>
