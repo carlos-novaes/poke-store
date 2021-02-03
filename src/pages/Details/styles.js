@@ -16,6 +16,9 @@ export const Container = styled.div`
       svg {
         margin-right: 10px;
       }
+      span {
+        font-size: 20px;
+      }
     }
   }
 

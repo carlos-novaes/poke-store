@@ -38,7 +38,7 @@ export default function Cart() {
     <Container theme={theme}>
       <Link to={`/store/${theme.type}`}>
         <header>
-          <IoChevronBackCircleOutline size={20} />
+          <IoChevronBackCircleOutline size={25} />
           <span>Voltar</span>
         </header>
       </Link>

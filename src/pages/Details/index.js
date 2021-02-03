@@ -43,7 +43,7 @@ export default function Details() {
     <Container theme={theme}>
       <Link to={`/store/${theme.type}`}>
         <header>
-          <IoChevronBackCircleOutline size={20} />
+          <IoChevronBackCircleOutline size={26} />
           <span>Voltar</span>
         </header>
       </Link>
@@ -63,7 +63,7 @@ export default function Details() {
             <h3>Tipos</h3>
             <div>
               {pokemon.types.map((t) => (
-                <li key={t.name}>
+                <li key={t.type.name}>
                   <span>{t.type.name}</span>
                 </li>
               ))}
