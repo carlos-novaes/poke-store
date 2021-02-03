@@ -5,6 +5,16 @@ export const Table = styled.table`
   height: 100%;
   overflow: auto;
 
+  @media (max-width: 495px) {
+    .subtotal {
+      display: none;
+    }
+
+    img {
+      height: 15vw;
+    }
+  }
+
   thead th {
     color: #999;
     text-align: center;

@@ -12,6 +12,24 @@ export const Container = styled.div`
   justify-content: space-between;
   flex-direction: column;
 
+  a {
+    text-decoration: none;
+    color: #000;
+    header {
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  @media (max-width: 672px) {
+    width: 95%;
+    padding: 10px;
+  }
+
   div {
     overflow: auto;
     height: 100%;
@@ -37,6 +55,10 @@ export const Container = styled.div`
       &:hover {
         filter: brightness(80%);
       }
+
+      @media (max-width: 394px) {
+        padding: 6px 10px;
+      }
     }
   }
 `;
@@ -53,5 +75,8 @@ export const Total = styled.div`
   strong {
     font-size: 28px;
     margin-left: 5px;
+    @media (max-width: 375px) {
+      font-size: 20px;
+    }
   }
 `;

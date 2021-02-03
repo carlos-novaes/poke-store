@@ -68,6 +68,7 @@ export const ListItem = styled.li`
       flex: 1;
       text-align: center;
       font-weight: bold;
+      padding: 0 5px;
     }
   }
 `;

@@ -8,7 +8,7 @@ import Card from '../../components/Card';
 import { useTheme } from '../../hooks/theme';
 import api from '../../services/api';
 import { formatPrice } from '../../util/format';
-import { Cart, Container, Filter, ProductList, Total } from './styles';
+import { Cart, Container, Filter, ProductList, Total, Wrapper } from './styles';
 import PokeTable from '../../components/PokeTable';
 import * as CartActions from '../../store/modules/cart/actions';
 
@@ -80,7 +80,7 @@ export default function Store() {
   };
 
   return (
-    <div style={styles.main}>
+    <Wrapper>
       <Filter>
         <input
           type="text"
@@ -102,7 +102,7 @@ export default function Store() {
               />
             ))}
         </ProductList>
-        <Cart theme={theme}>
+        <Cart id="cart-section" theme={theme}>
           <div style={styles.cartTopSection}>
             <MdShoppingCart size={30} />
             <h2>Carrinho</h2>
@@ -124,6 +124,6 @@ export default function Store() {
           </footer>
         </Cart>
       </Container>
-    </div>
+    </Wrapper>
   );
 }

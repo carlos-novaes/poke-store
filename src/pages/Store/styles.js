@@ -5,6 +5,13 @@ export const ProductList = styled.ul`
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
   list-style: none;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 955px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `;
 
 export const Total = styled.div`
@@ -70,17 +77,25 @@ export const Cart = styled.div`
 
 export const Container = styled.div`
   display: grid;
+  justify-content: center;
   grid-template-columns: 5fr 2fr;
   grid-gap: 20px;
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+    div#cart-section {
+      display: none;
+    }
+  }
 `;
 
 export const Filter = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-around;
 
   input {
-    width: 30%;
+    width: 50vw;
     margin-bottom: 20px;
     padding-left: 35px;
     color: $color-gray-one;
@@ -102,4 +117,11 @@ export const Filter = styled.div`
       box-shadow: 2px 3px 20px 1px rgba(0, 0, 0, 0.3);
     }
   }
+`;
+
+export const Wrapper = styled.div`
+  display: grid;
+  justify-content: space-around;
+  align-items: center;
+  margin: 20px;
 `;

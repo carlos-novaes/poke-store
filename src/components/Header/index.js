@@ -25,7 +25,7 @@ export default function Header({ children }) {
           </div>
         </Anchor>
 
-        <Link to="/store">
+        <Link to={`/store/${theme.type}`}>
           <img src={logo} alt="PokeStore" />
         </Link>
 

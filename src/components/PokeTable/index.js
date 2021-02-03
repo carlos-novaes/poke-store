@@ -45,7 +45,7 @@ export default function PokeTable({ subTotalHidden, imgSize }) {
           <th />
           <th>PRODUTO</th>
           <th>QTD</th>
-          {subTotalHidden ? null : <th>SUBTOTAL</th>}
+          {subTotalHidden ? null : <th className="subtotal">SUBTOTAL</th>}
           <th />
         </tr>
       </thead>
@@ -74,7 +74,7 @@ export default function PokeTable({ subTotalHidden, imgSize }) {
               </div>
             </td>
             {subTotalHidden ? null : (
-              <td>
+              <td className="subtotal">
                 <strong>{pokemon.subtotal}</strong>
               </td>
             )}
