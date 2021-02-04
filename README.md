@@ -3,10 +3,10 @@
 > Compre pokémon de todos os tipos
 
 **_PokeStore Home_**
-<img alt="Demo on Netlify" src="https://res.cloudinary.com/carlos-novaes/poke-store/main/public/images/home.png">
+<img alt="Demo on Netlify" src="https://raw.githubusercontent.com/carlos-novaes/poke-store/main/public/images/home.png">
 
 **_PokeStore Store_**
-<img alt="Demo on Netlify" src="https://res.cloudinary.com/carlos-novaes/poke-store/main/public/images/store.png">
+<img alt="Demo on Netlify" src="https://github.com/carlos-novaes/poke-store/blob/main/public/images/store.png?raw=true">
 
 ### Acesso
 
