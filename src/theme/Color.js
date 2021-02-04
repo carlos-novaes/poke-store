@@ -11,13 +11,13 @@ const StoresTheme = {
   },
   fire: {
     type: 'fire',
-    textColor: '#000000',
-    backgroundColor: '#cf4e1b',
+    textColor: '#fff',
+    backgroundColor: '#ad3a10',
   },
   water: {
     type: 'water',
-    textColor: '#000000',
-    backgroundColor: '#74ccf4',
+    textColor: '#fff',
+    backgroundColor: '#139fb2',
   },
 };
 
