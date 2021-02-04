@@ -16,20 +16,20 @@ export default function Cart() {
   const dispatch = useDispatch();
 
   const total = useSelector((state) =>
-    formatPrice(
-      state.cart
-        .filter((poke) => poke.type === theme.type)
-        .reduce((sumTotal, poke) => {
-          sumTotal += poke.id * poke.amount;
-          return sumTotal;
-        }, 0),
-    ),
+    state.cart
+      .filter((poke) => poke.type === theme.type)
+      .reduce((sumTotal, poke) => {
+        sumTotal += poke.id * poke.amount;
+        return sumTotal;
+      }, 0),
   );
+
+  const formattedTotal = formatPrice(total);
 
   const handleCheckout = (pokeType) => {
     swal(
       'Compra Finalizada',
-      'Você recebeu R$50,00 em cashback',
+      `Você recebeu 15% de cashback, totalizando: ${formatPrice(total * 0.15)}`,
       'success',
     ).then(() => dispatch(CartActions.emptyCart(pokeType)));
   };
@@ -53,7 +53,7 @@ export default function Cart() {
 
         <Total>
           <span>TOTAL</span>
-          <strong>{total}</strong>
+          <strong>{formattedTotal}</strong>
         </Total>
       </footer>
     </Container>
